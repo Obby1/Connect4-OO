@@ -111,16 +111,12 @@ class Game {
     }
 
   /** handleClick: handle click of column top to play piece */
-  handleClick(evt) {
-    // get x from ID of clicked cell
-    // no need to declare .this.evt because you're getting x from evt target directly
+  handleClick= (evt) => {
+
     const x = +evt.target.id;
     console.log(x)
   
-    // get next spot in column (if none, ignore click)
-    // this.findSpotforColor = this.findSpotForCol.bind(this);
-    // need to declare this.findSpotforCol because that function has to refer to the new instance x
-    // this.findSpotForCol = findSpotForCol.bind(this);
+
     
     const y = this.findSpotforCol(x);
     
@@ -240,8 +236,12 @@ new Game(1, 2, 6, 7);
 //   }
 // }
 
-
-
+    // get x from ID of clicked cell
+    // no need to declare .this.evt because you're getting x from evt target directly
+    // get next spot in column (if none, ignore click)
+    // this.findSpotforColor = this.findSpotForCol.bind(this);
+    // need to declare this.findSpotforCol because that function has to refer to the new instance x
+    // this.findSpotForCol = findSpotForCol.bind(this);
 
 
 
