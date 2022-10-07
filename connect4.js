@@ -19,8 +19,11 @@ class Game {
     this.HEIGHT = HEIGHT;
     this.WIDTH = WIDTH;
     this.currPlayer = p1;
+    
     this.makeBoard();
     this.makeHtmlBoard();
+    // this.findSpotForCol = findSpotForCol.bind(this)
+   
   }
   /** makeBoard: create in-JS board structure:
  *   board = array of rows, each row is array of cells  (board[y][x])
@@ -44,8 +47,8 @@ class Game {
 
     // this.handleGameClick = this.handleClick.bind(this);
     // top.addEventListener('click', this.handleGameClick);
-
-    top.addEventListener(`click`, this.handleClick.bind(this));
+    this.handleGameClick = this.handleClick.bind(this);
+    top.addEventListener("click", this.handleGameClick);
   
     for (let x = 0; x < this.WIDTH; x++) {
       const headCell = document.createElement('td');
@@ -70,7 +73,18 @@ class Game {
   }
 
   /** findSpotForCol: given column x, return top empty y (null if filled) */
-  findSpotForCol(x) {
+
+  // findSpotForCol(x) {
+  //   for (let y = this.height - 1; y >= 0; y--) {
+  //     if (!this.board[y][x]) {
+  //       return y;
+  //     }
+  //   }
+  //   return null;
+  // }
+
+
+  findSpotForCol = (x)=> {
     for (let y = this.HEIGHT - 1; y >= 0; y--) {
       if (!this.board[y][x]) {
         return y;
@@ -106,7 +120,11 @@ class Game {
     // get next spot in column (if none, ignore click)
     // this.findSpotforColor = this.findSpotForCol.bind(this);
     // need to declare this.findSpotforCol because that function has to refer to the new instance x
+    // this.findSpotForCol = findSpotForCol.bind(this);
+    
     const y = this.findSpotforCol(x);
+    
+    
     console.log(y);
     if (y === null) {
       return;
